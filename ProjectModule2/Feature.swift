@@ -7,7 +7,11 @@ protocol Device {
     var isWorking: Bool { get set }
     func status()
 }
-
+enum SmartMode{
+    case sleep
+    case safe
+    case romantic
+}
 class Door: Device {
     var name: String
     init(name: String) {
@@ -15,18 +19,29 @@ class Door: Device {
     }
     var isWorking: Bool = true
     var openOrClose: Bool = true
+    var locked: Bool = false
     func close() {
         openOrClose = false
     }
     func open() {
         openOrClose = true
     }
+    func lock() {
+        locked = true
+    }
+    func unlock() {
+        locked = false
+    }
     func status() {
-        if openOrClose == true {
-            print("Дверь \(name) открыта")
+        if openOrClose == true, locked == false {
+            print("Дверь \(name) открыта, замок открыт")
+        }
+        else if openOrClose == false && locked == true {
+            print("Дверь \(name) закрыта, замок закрыт")
         }
         else {
-            print("Дверь \(name) закрыта")
+            print("Дверь \(name) закрыта, замок открыт")
         }
     }
 }
+
