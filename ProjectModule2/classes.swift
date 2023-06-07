@@ -130,7 +130,7 @@ class Curtain: Device {
 }
 class SmartHome {
     var devices: [Device] = []
-    public let smartHome = SmartHome()
+
     func addDevice(_ device: Device) {
         devices.append(device)
     }
@@ -161,7 +161,7 @@ class SmartHome {
         }
     }
     func printDeviceStatus(deviceName: String) {
-        for device in smartHome.devices {
+        for device in devices {
             if device.name == deviceName {
                 device.status()
                 return
@@ -170,10 +170,10 @@ class SmartHome {
         print("Устройство '\(deviceName)' не найдено.")
     }
     func printAllDeviceStatus() {
-        smartHome.updateDeviceStatus()
+        updateDeviceStatus()
     }
     func turnOnDevice(deviceName: String) {
-        for var device in smartHome.devices {
+        for var device in devices {
             if device.name == deviceName {
                 device.isWorking = true
                 print("Устройство '\(deviceName)' включено.")
@@ -183,7 +183,7 @@ class SmartHome {
         print("Устройство '\(deviceName)' не найдено.")
     }
     func turnOffDevice(deviceName: String) {
-        for var device in smartHome.devices {
+        for var device in devices {
             if device.name == deviceName {
                 device.isWorking = false
                 print("Устройство '\(deviceName)' выключено.")
@@ -193,7 +193,7 @@ class SmartHome {
         print("Устройство '\(deviceName)' не найдено.")
     }
     func increaseBrightness(deviceName: String) {
-        for device in smartHome.devices {
+        for device in devices {
             if device.name == deviceName, let light = device as? Light {
                 light.increaseBrightness()
                 print("Яркость устройства '\(deviceName)' увеличена.")
@@ -203,7 +203,7 @@ class SmartHome {
         print("Устройство '\(deviceName)' не найдено или не является лампочкой.")
     }
     func decreaseBrightness(deviceName: String) {
-        for device in smartHome.devices {
+        for device in devices {
             if device.name == deviceName, let light = device as? Light {
                 light.decreaseBrightness()
                 print("Яркость устройства '\(deviceName)' уменьшена.")

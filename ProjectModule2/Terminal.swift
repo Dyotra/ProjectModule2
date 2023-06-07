@@ -51,15 +51,15 @@ class terminal: SmartHome {
                 decreaseBrightness(deviceName: deviceName)
             }
             else if input == "sleep" {
-                smartHome.setSmartMode(.sleep)
+                setSmartMode(.sleep)
                 print("Режим Sleep активирован.")
             }
             else if input == "safe" {
-                smartHome.setSmartMode(.safe)
+                setSmartMode(.safe)
                 print("Режим Safe активирован.")
             }
             else if input == "romantic" {
-                smartHome.setSmartMode(.romantic)
+                setSmartMode(.romantic)
                 print("Режим Romantic активирован.")
             }
             else {
