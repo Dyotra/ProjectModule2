@@ -1,4 +1,43 @@
 class terminal: SmartHome {
+    func addYourDevices() {
+         let livingRoomTV = TV(name: "Телевизор в зале")
+         let livingRoomThermostat = Thermostat(name: "Термостат в зале")
+         let livingRoomCurtain = Curtain(name: "Шторы в зале")
+         let livingRoomLight = Light(name: "Лампочка в зале")
+         let livingRoomDoor = Door(name: "Дверь в зале")
+         
+         let kitchenCurtain = Curtain(name: "Шторы на кухне")
+         let kitchenLight = Light(name: "Лампочка на кухне")
+         let kitchenDoor = Door(name: "Дверь на кухне")
+         
+         let bedroomCurtain = Curtain(name: "Шторы в спальне")
+         let bedroomLight = Light(name: "Лампочка в спальне")
+         let bedroomDoor = Door(name: "Дверь в спальне")
+         let bedroomTV = TV(name: "Телевизор в спальне")
+         
+         let bathroomCurtain = Curtain(name: "Шторы в ванной")
+         let bathroomLight = Light(name: "Лампочка в ванной")
+         let bathroomDoor = Door(name: "Дверь в ванную")
+         
+         addDevice(livingRoomTV)
+         addDevice(livingRoomThermostat)
+         addDevice(livingRoomCurtain)
+         addDevice(livingRoomLight)
+         addDevice(livingRoomDoor)
+         
+         addDevice(kitchenCurtain)
+         addDevice(kitchenLight)
+         addDevice(kitchenDoor)
+         
+         addDevice(bedroomCurtain)
+         addDevice(bedroomLight)
+         addDevice(bedroomDoor)
+         addDevice(bedroomTV)
+         
+         addDevice(bathroomCurtain)
+         addDevice(bathroomLight)
+         addDevice(bathroomDoor)
+     }
     func startProgramm() {
         print("Добро пожаловать в умный дом!")
         print("Доступные команды:")
@@ -11,6 +50,7 @@ class terminal: SmartHome {
         print("- 'sleep': активировать режим Sleep")
         print("- 'safe': активировать режим Safe")
         print("- 'romantic': активировать режим Romantic")
+        addYourDevices()
         while true {
             print("Введите команду:")
             guard let userInput = readLine() else {
