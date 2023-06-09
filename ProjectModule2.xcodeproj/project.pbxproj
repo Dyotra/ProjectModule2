@@ -10,7 +10,6 @@
 		0B11FF872A27861700109DC5 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B11FF862A27861700109DC5 /* main.swift */; };
 		0B724B392A2A2207006D2C06 /* classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B724B382A2A2207006D2C06 /* classes.swift */; };
 		0B7FC1032A30AF330001D5BA /* Terminal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B7FC1022A30AF320001D5BA /* Terminal.swift */; };
-		0B8C66D22A2E1A19004E21E2 /* devices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8C66D12A2E1A19004E21E2 /* devices.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,7 +29,6 @@
 		0B11FF862A27861700109DC5 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		0B724B382A2A2207006D2C06 /* classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classes.swift; sourceTree = "<group>"; };
 		0B7FC1022A30AF320001D5BA /* Terminal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Terminal.swift; sourceTree = "<group>"; };
-		0B8C66D12A2E1A19004E21E2 /* devices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = devices.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +63,6 @@
 			children = (
 				0B11FF862A27861700109DC5 /* main.swift */,
 				0B724B382A2A2207006D2C06 /* classes.swift */,
-				0B8C66D12A2E1A19004E21E2 /* devices.swift */,
 				0B7FC1022A30AF320001D5BA /* Terminal.swift */,
 			);
 			path = ProjectModule2;
@@ -132,7 +129,6 @@
 				0B724B392A2A2207006D2C06 /* classes.swift in Sources */,
 				0B7FC1032A30AF330001D5BA /* Terminal.swift in Sources */,
 				0B11FF872A27861700109DC5 /* main.swift in Sources */,
-				0B8C66D22A2E1A19004E21E2 /* devices.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
