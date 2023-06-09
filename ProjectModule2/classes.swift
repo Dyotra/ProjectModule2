@@ -18,27 +18,37 @@ class Door: Device {
     var isWorking: Bool = true
     var openOrClose: Bool = true
     var locked: Bool = false
-    func close() {
-        openOrClose = false
-    }
-    func open() {
-        openOrClose = true
-    }
     func lock() {
-        locked = true
+        if openOrClose {
+            locked = true
+            print("Дверь \(name) заблокирована.")
+        } else {
+            print("Невозможно заблокировать дверь \(name). Дверь должна быть закрыта.")
+        }
     }
+    
     func unlock() {
-        locked = false
+        if openOrClose {
+            print("Невозможно разблокировать дверь \(name). Дверь должна быть закрыта.")
+        } else {
+            locked = false
+            print("Дверь \(name) разблокирована.")
+        }
     }
+    
     func status() {
-        if openOrClose == true, locked == false {
-            print("Дверь \(name) открыта, замок открыт")
-        }
-        else if openOrClose == false && locked == true {
-            print("Дверь \(name) закрыта, замок закрыт")
-        }
-        else {
-            print("Дверь \(name) закрыта, замок открыт")
+        if openOrClose {
+            if locked {
+                print("Дверь \(name) открыта, заблокирована.")
+            } else {
+                print("Дверь \(name) открыта, разблокирована.")
+            }
+        } else {
+            if locked {
+                print("Дверь \(name) закрыта, заблокирована.")
+            } else {
+                print("Дверь \(name) закрыта, разблокирована.")
+            }
         }
     }
 }
@@ -146,6 +156,68 @@ class SmartHome {
             }
         }
     }
+    func findDeviceByName(_ name: String) -> Device? {
+           return devices.first { $0.name == name }
+       }
+    func openDevice(deviceName: String) {
+        guard let device = findDeviceByName(deviceName) else {
+            print("Устройство с именем '\(deviceName)' не найдено.")
+            return
+        }
+        if let door = device as? Door {
+            door.openOrClose = true
+            let doorState = door.openOrClose ? "открыта" : "закрыта"
+            print("Дверь '\(door.name)' была успешно \(doorState).")
+        } else if let curtain = device as? Curtain {
+            curtain.isOpen = true
+            let curtainState = curtain.isOpen ? "открыты" : "закрыты"
+            print("Шторы '\(curtain.name)' были успешно \(curtainState).")
+        } else {
+            print("Устройство '\(device.name)' не поддерживает функцию открытия и закрытия.")
+        }
+    }
+    func closeDevice(deviceName: String) {
+        guard let device = findDeviceByName(deviceName) else {
+            print("Устройство с именем '\(deviceName)' не найдено.")
+            return
+        }
+        if let door = device as? Door {
+            door.openOrClose = false
+            let doorState = door.openOrClose ? "открыта" : "закрыта"
+            print("Дверь '\(door.name)' была успешно \(doorState).")
+        } else if let curtain = device as? Curtain {
+            curtain.isOpen = false
+            let curtainState = curtain.isOpen ? "открыты" : "закрыты"
+            print("Шторы '\(curtain.name)' были успешно \(curtainState).")
+        } else {
+            print("Устройство '\(device.name)' не поддерживает функцию открытия и закрытия.")
+        }
+    }
+    func lockDevice(deviceName: String) {
+            guard let device = findDeviceByName(deviceName) else {
+                print("Устройство с именем '\(deviceName)' не найдено.")
+                return
+            }
+            
+            if let door = device as? Door {
+                door.lock()
+            } else {
+                print("Устройство '\(deviceName)' не является дверью и не может быть заблокировано.")
+            }
+        }
+        
+        func unlockDevice(deviceName: String) {
+            guard let device = findDeviceByName(deviceName) else {
+                print("Устройство с именем '\(deviceName)' не найдено.")
+                return
+            }
+            
+            if let door = device as? Door {
+                door.unlock()
+            } else {
+                print("Устройство '\(deviceName)' не является дверью и не может быть разблокировано.")
+            }
+        }
     func closeAllCurtains() {
         for device in devices {
             if let curtain = device as? Curtain {

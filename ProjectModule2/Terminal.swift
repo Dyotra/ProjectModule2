@@ -45,11 +45,16 @@ class terminal: SmartHome {
         print("- 'все статусы' для получения статуса всех устройств")
         print("- 'включить' для включения устройства")
         print("- 'выключить' для выключения устройства")
+        print("- 'открыть' для открытия дверей и штор")
+        print("- 'закрыть' для закрытия дверей или штор")
+        print("- 'заблокировать' для блокировки дверей")
+        print("- 'разблокировать' для разблокировки дверей")
+        print("- 'закрыть' для закрытия дверей или штор")
         print("- 'увеличить яркость' для увеличения яркости устройства")
         print("- 'уменьшить яркость' для уменьшения яркости устройства")
-        print("- 'sleep': активировать режим Sleep")
-        print("- 'safe': активировать режим Safe")
-        print("- 'romantic': активировать режим Romantic")
+        print("- 'sleep': активировать режим Sleep (все двери блокируются и температура в комнате устанавливается на 25 градусах)")
+        print("- 'safe': активировать режим Safe (все двери закрываются и блокируются)")
+        print("- 'romantic': активировать режим Romantic (включается телевизор, устанавливается 4 канал (музыка), громкость устанавливается на 10, шторы открываются, температура термостата устанавливается на 25)")
         addYourDevices()
         while true {
             print("Введите команду:")
@@ -90,6 +95,33 @@ class terminal: SmartHome {
                 }
                 decreaseBrightness(deviceName: deviceName)
             }
+            else if input == "открыть" {
+                print("Введите название устройства:")
+                guard let deviceName = readLine() else {
+                    continue
+                }
+                openDevice(deviceName: deviceName)
+            }
+            else if input == "закрыть" {
+                print("Введите название устройства:")
+                guard let deviceName = readLine() else {
+                    continue
+                }
+                closeDevice(deviceName: deviceName)
+            }
+            else if input == "заблокировать" {
+                            print("Введите название устройства:")
+                            guard let deviceName = readLine() else {
+                                continue
+                            }
+                            lockDevice(deviceName: deviceName)
+           } else if input == "разблокировать" {
+                            print("Введите название устройства:")
+                            guard let deviceName = readLine() else {
+                                continue
+                            }
+                            unlockDevice(deviceName: deviceName)
+                        }
             else if input == "sleep" {
                 setSmartMode(.sleep)
                 print("Режим Sleep активирован.")
